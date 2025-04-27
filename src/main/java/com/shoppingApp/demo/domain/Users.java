@@ -1,10 +1,18 @@
 package com.shoppingApp.demo.domain;
 
-public class User {
+import jakarta.persistence.*;
+import lombok.Data;
+
+@Data
+@Entity
+@Table(name= "users")
+public class Users {
+    @Id
+    private Long id;
     private String name;
-    private long phoneNumber;
+    private Long phoneNumber;
     private String email;
-    private String passowrd;
+    private String password;
 
     public String getName() {
         return name;
@@ -14,11 +22,19 @@ public class User {
         this.name = name;
     }
 
-    public long getPhoneNumber() {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(long phoneNumber) {
+    public void setPhoneNumber(Long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -30,12 +46,12 @@ public class User {
         this.email = email;
     }
 
-    public String getPassowrd() {
-        return passowrd;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPassowrd(String passowrd) {
-        this.passowrd = passowrd;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
@@ -44,17 +60,17 @@ public class User {
                 "name='" + name + '\'' +
                 ", phoneNumber=" + phoneNumber +
                 ", email='" + email + '\'' +
-                ", passowrd='" + passowrd + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 
-    public User(String name, long phoneNumber, String email, String passowrd) {
+    public Users(String name, long phoneNumber, String email, String password) {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.email = email;
-        this.passowrd = passowrd;
+        this.password = password;
     }
-    public User (){
+    public Users (){
 
     }
 
