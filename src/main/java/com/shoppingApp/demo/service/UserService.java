@@ -5,10 +5,17 @@ import com.shoppingApp.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
     @Autowired private UserRepository userRepository;
     public void createNewUser (Users user){
        userRepository.saveAndFlush(user);
+    }
+
+    public List<Users> getAllUsers() {
+       List<Users> userList = userRepository.findAll();
+       return userList;
     }
 }
