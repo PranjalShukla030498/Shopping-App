@@ -7,8 +7,9 @@ import lombok.Data;
 @Entity
 @Table(name= "users")
 public class Users {
+
     @Id
-    private Long id;
+    private int id;
     private String name;
     private Long phoneNumber;
     private String email;
@@ -22,11 +23,11 @@ public class Users {
         this.name = name;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -64,12 +65,15 @@ public class Users {
                 '}';
     }
 
-    public Users(String name, long phoneNumber, String email, String password) {
+    public Users(int id, String name, Long phoneNumber, String email, String password) {
+        this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.password = password;
     }
+
+
     public Users (){
 
     }

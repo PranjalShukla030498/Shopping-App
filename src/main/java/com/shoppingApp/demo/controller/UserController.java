@@ -3,10 +3,7 @@ package com.shoppingApp.demo.controller;
 import com.shoppingApp.demo.domain.Users;
 import com.shoppingApp.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,13 +13,20 @@ public class UserController {
 
     @PostMapping("/users/createNew")
     public String createNewUser (@RequestBody Users user){
-        userService.createNewUser(user);
-        return "Your account is created";
+        return userService.createNewUser(user);
+
     }
 
     @GetMapping("/users/getAllUsers")
     public List<Users> getAllusers(){
        return userService.getAllUsers();
+    }
+
+    @DeleteMapping("/users/delete/{id}")
+    public String deleteUser (@PathVariable int id ){
+        userService.deleteUser(id);
+        return "Your Account is deleted";
+
     }
 
 }
