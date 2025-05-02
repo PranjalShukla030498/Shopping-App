@@ -1,5 +1,6 @@
 package com.shoppingApp.demo.controller;
 
+import com.shoppingApp.demo.Dto.AddressDto;
 import com.shoppingApp.demo.domain.Address;
 import com.shoppingApp.demo.domain.Users;
 import com.shoppingApp.demo.service.UserService;
@@ -37,7 +38,7 @@ public class UserController {
     }
 
     @PostMapping("/users/address/create")
-    public String createAddress( @Valid  @RequestBody Address address) {
+    public String createAddress( @Valid  @RequestBody AddressDto address) {
         return userService.createNewAddress(address);
     }
 
