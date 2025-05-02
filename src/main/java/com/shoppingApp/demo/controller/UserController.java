@@ -21,30 +21,34 @@ public class UserController {
 
     @PostMapping("/users/createNew")
     public String createNewUser (@RequestBody Users user){
+        logger.info("Request recieved to save new user : {}", user);
         return userService.createNewUser(user);
 
     }
 
     @GetMapping("/users/getAllUsers")
     public List<Users> getAllusers(){
-       return userService.getAllUsers();
+        logger.info("Request recieved to get All users");
+        return userService.getAllUsers();
     }
 
     @DeleteMapping("/users/delete/{id}")
     public String deleteUser (@PathVariable int id ){
+        logger.info("Request recieved to delete user by Id : {}", id);
         userService.deleteUser(id);
         return "Your Account is deleted";
 
     }
 
     @GetMapping("/users/address/getAllAddress/{userId}")
-    public List <Address> getAlladdress(@PathVariable int userId ){
+    public List<AddressDto> getAlladdress(@PathVariable int userId ){
         logger.info("userId is : {}", userId);
         return userService.getAllAddress(userId);
     }
 
     @PostMapping("/users/address/create")
     public String createAddress( @Valid  @RequestBody AddressDto address) {
+        logger.info("Request recieved to save address {}", address);
         return userService.createNewAddress(address);
     }
 

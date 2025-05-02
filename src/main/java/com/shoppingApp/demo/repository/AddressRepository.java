@@ -12,7 +12,8 @@ import java.util.List;
 @Repository
 public interface AddressRepository extends JpaRepository <Address, Integer> {
 
-    @Query("Select a from Address LEFT JOIN Users u where u.id = :userId")
-    public List<Address> getExistingAddressForUserId (@Param("userId")int  userId);
+//    @Query("Select a from Address LEFT OUTER JOIN Users u where u.id = :userId")
+//    public List<Address> getExistingAddressForUserId (@Param("userId")int  userId);
+        List<Address> findByUserId(int userId);
 
 }
