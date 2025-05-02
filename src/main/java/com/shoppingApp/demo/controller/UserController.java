@@ -36,9 +36,18 @@ public class UserController {
 
     }
 
+    @GetMapping("/users/address/getAllAddress/{userId}")
+    public List <Address> getAlladdress(@PathVariable int userId ){
+        logger.info("userId is : {}", userId);
+        return userService.getAllAddress(userId);
+    }
+
     @PostMapping("/users/address/create")
     public String createAddress( @Valid  @RequestBody Address address) {
         return userService.createNewAddress(address);
     }
+
+
+
 
 }
