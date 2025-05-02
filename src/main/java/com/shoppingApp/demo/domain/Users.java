@@ -3,6 +3,8 @@ package com.shoppingApp.demo.domain;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @Entity
 @Table(name= "users")
@@ -14,6 +16,8 @@ public class Users {
     private Long phoneNumber;
     private String email;
     private String password;
+    @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL)
+    private List<Address> address ;
 
     public String getName() {
         return name;
@@ -53,6 +57,14 @@ public class Users {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Address> getAddress() {
+        return address;
+    }
+
+    public void setAddress(List<Address> address) {
+        this.address = address;
     }
 
     @Override

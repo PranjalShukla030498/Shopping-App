@@ -1,6 +1,8 @@
 package com.shoppingApp.demo.service;
 
+import com.shoppingApp.demo.domain.Address;
 import com.shoppingApp.demo.domain.Users;
+import com.shoppingApp.demo.repository.AddressRepository;
 import com.shoppingApp.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,6 +12,8 @@ import java.util.List;
 @Service
 public class UserService {
     @Autowired private UserRepository userRepository;
+    @Autowired private AddressRepository addressRepository;
+
     public String createNewUser (Users user){
         Users existingUser = userRepository.getExistingUser(user.getEmail());
         System.out.println(existingUser);
@@ -30,6 +34,12 @@ public class UserService {
     public void deleteUser (int id){
         System.out.println(id);
         userRepository.deleteById(id);
+    }
+
+
+    public String createNewAddress (Address address){
+        addressRepository.saveAndFlush(address);
+        return "Address Saved !!";
     }
 
 }
