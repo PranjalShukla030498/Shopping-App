@@ -1,6 +1,7 @@
 package com.shoppingApp.demo.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -14,6 +15,7 @@ import lombok.Data;
 public class Address {
     @Id
     private int id;
+    @JsonIgnore
    @ManyToOne()
    @JoinColumn(name = "user_id")
     private Users user;
